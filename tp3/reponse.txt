@@ -1,0 +1,7 @@
+1) Un service web est une plateforme commune qui permet aux applications développées
+dans des langages différents depouvoir communiquer entre elles
+
+2) API REST est un style de programmation definie par un ensemble de contraintes à respecter pour 
+créer des services web. Ce style est très apprécié et utilisé en IoT ou développement mobile
+
+3)
