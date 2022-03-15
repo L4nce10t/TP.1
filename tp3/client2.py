@@ -19,13 +19,13 @@ class MainWindow(QWidget):
 
     def initUI(self):
         self.setWindowTitle("Client")  # titre d'interface
-        self.setFixedSize(400, 400)
+        self.setFixedSize(400, 300)  # change la taille de la fenetre
         self.label1 = QLabel("Enter your host IP:", self)
         self.text = QLineEdit(self)
         self.text.move(10, 30)  # ca fait changer le champ de texte de place
         self.label2 = QLabel("Answer:", self)
         self.label2.move(10, 60)  # ca fait changer le text anwser
-        self.button = QPushButton("Send", self)
+        self.button = QPushButton("Send", self)  # .button donne le type
         self.button.move(10, 90)  # ca fait changer le bouton de place
 
         self.button.clicked.connect(self.on_click)
