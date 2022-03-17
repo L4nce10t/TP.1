@@ -14,3 +14,5 @@ def multi_egyp(nb1, nb):
 nb1 = int(input())
 nb = int(input())
 multi_egyp(nb1, nb)
+
+# pour le commit du tp1
