@@ -22,11 +22,15 @@ class MainWindow(QWidget):
         self.setFixedSize(400, 300)  # change la taille de la fenetre
         self.label1 = QLabel("Enter your host IP:", self)
         self.text = QLineEdit(self)
-        self.text.move(10, 30)  # ca fait changer le champ de texte de place
+        # ca fait changer le champ de texte de place (x-horizontale,y-vertical)
+        self.text.move(10, 30)
         self.label2 = QLabel("Answer:", self)
         self.label2.move(10, 60)  # ca fait changer le text anwser
         self.button = QPushButton("Send", self)  # .button donne le type
         self.button.move(10, 90)  # ca fait changer le bouton de place
+        self.label3 = QLabel("hostname:", self)
+        self.text2 = QLineEdit(self)
+        self.text2.move(10, 120)
 
         self.button.clicked.connect(self.on_click)
         self.button.pressed.connect(self.on_click)
