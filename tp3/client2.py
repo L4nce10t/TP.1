@@ -20,17 +20,25 @@ class MainWindow(QWidget):
     def initUI(self):
         self.setWindowTitle("Client")  # titre d'interface
         self.setFixedSize(400, 300)  # change la taille de la fenetre
-        self.label1 = QLabel("Enter your host IP:", self)
-        self.text = QLineEdit(self)
+        self.label1 = QLabel("IP a geolocalisé:", self)
         # ca fait changer le champ de texte de place (x-horizontale,y-vertical)
+        self.text = QLineEdit(self)
         self.text.move(10, 30)
-        self.label2 = QLabel("Answer:", self)
-        self.label2.move(10, 60)  # ca fait changer le text anwser
-        self.button = QPushButton("Send", self)  # .button donne le type
-        self.button.move(10, 90)  # ca fait changer le bouton de place
-        self.label3 = QLabel("hostname:", self)
+
+        self.label3 = QLabel("Votre ip:", self)
+        self.label3.move(0, 55)
         self.text2 = QLineEdit(self)
-        self.text2.move(10, 120)
+        self.text2.move(10, 80)
+
+        self.label4 = QLabel("Api key:", self)
+        self.label4.move(0, 110)
+        self.text3 = QLineEdit(self)
+        self.text3.move(10, 135)
+
+        self.label2 = QLabel("Answer:", self)
+        self.label2.move(10, 170)  # ca fait changer le text anwser
+        self.button = QPushButton("Send", self)  # .button donne le type
+        self.button.move(10, 200)  # ca fait changer le bouton de place
 
         self.button.clicked.connect(self.on_click)
         self.button.pressed.connect(self.on_click)
@@ -38,7 +46,9 @@ class MainWindow(QWidget):
         self.show()
 
     def on_click(self):
-        hostname = self.text.text()
+        hostname = self.text2.text()
+        ip = self.text.text()
+        api_key = self.text3.text()
 
         if hostname == "":
             QMessageBox.about(self, "Error", "Please fill the field")
