@@ -40,27 +40,35 @@ class MainWindow(QWidget):
         self.button = QPushButton("Send", self)  # .button donne le type
         self.button.move(10, 200)  # ca fait changer le bouton de place
 
+        # on dit que si on clic sur button ca appel la fonction on_click
         self.button.clicked.connect(self.on_click)
         self.button.pressed.connect(self.on_click)
 
         self.show()
 
-    def on_click(self):
-        hostname = self.text2.text()
-        ip = self.text.text()
-        api_key = self.text3.text()
+    def create_url(res, self):
+        openstreet_url = "https://www.openstreetmap.org/?mlat=%s&mlon=%smap=12" % (
+            res["lat"], res["long"])
+        return openstreet_url
 
-        if hostname == "":
+    def on_click(self):
+        hostname = self.text2.text()  # 2001:978:2:2c::172:b
+        ip = self.text.text()  # 127.0.0.1:8000
+        api = self.text3.text()  # Rkj5oXutwUuRlVBNSiLjdczdjVglGhlC
+
+        if hostname == "" or ip == "" or api == "":
             QMessageBox.about(self, "Error", "Please fill the field")
         else:
-            res = self.__query(hostname)
+            res = self.__query(hostname, ip, api)
             if res:
                 self.label2.setText("Answer%s" % (res["Hello"]))
                 self.label2.adjustSize()
                 self.show()
+                Urls = main.create_url(res)
+                QDesktopServices.openUrl(QUrl(Urls))
 
-    def __query(self, hostname):
-        url = "http://%s" % (hostname)
+    def __query(self, hostname, ip, api):
+        url = "http://%s/ip/%s/api=%s" % (hostname, ip, api)
         r = requests.get(url)
         if r.status_code == requests.codes.NOT_FOUND:
             QMessageBox.about(self, "Error", "IP not found")
