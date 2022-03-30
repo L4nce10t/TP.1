@@ -4,11 +4,21 @@
 from discord import Client
 import discord
 
+# on charge les variables de notre fichier config
+import os
+
+from dotenv import load_dotenv
+
+load_dotenv(dotenv_path="config")
+
+client = discord.Client()
+client.run(os.getenv("TOKEN"))
+
 
 class MyBot(Client):
     def __init__(self):
         super().__init__()
-        self.run("OTU4NjkxMzU3NzYzOTg1NDQ4.YkRA5w.cZbbPlnBSfvTHjilWINvEwq2pbE")
+        self.run("TOKEN")
 
    #
     # Créer un événement
