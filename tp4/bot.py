@@ -23,7 +23,7 @@ class MyBot(Client):
 
     async def on_message(ctx, message):
         if message.content == "Ping":
-            await message.channel.send("Pong")
+            await message.channel.send("Pong") #commentaire
 
 
 default_intents = discord.Intents.default()
