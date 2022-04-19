@@ -28,9 +28,13 @@ class MyBot(Client):
         print("Le bot est prêt !")
         print(f"{self.user.display_name} est connecté au serveur")
 
-    async def on_message(ctx, message):
+    async def on_message(self, message):
         if message.content == "Ping":
-            await message.channel.send("Pong")  # commentaire
+            # pour renvoyer Pong lorsqu'on ecrit Ping
+            await message.channel.send("Pong")
+        # pour renvoyer un gif lorsqu'on ecrit Dance
+        if message.content.startswith("Dance"):
+            await message.channel.send("Le coding, le coding la : {0.author.mention}".format(message), file=discord.File('computer.gif'))
 
     # Reagi quand les membres qui arrivent et souhaite bienvenue aux nouveaux arrivants
     async def on_member_join(self, member):
