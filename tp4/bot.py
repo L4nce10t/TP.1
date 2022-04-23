@@ -67,8 +67,7 @@ class MyBot(Client):
             await guild.system_channel.send(to_send)
             time = datetime.datetime.now()
             f = open('logging.log', 'a')
-            f.write(time.strftime("%c") + " Un nouveau membre " +
-                    member + " est arrivé\n")
+            f.write(time.strftime("%c") + " Un nouveau membre est arrivé\n")
             f.close()
 
 
